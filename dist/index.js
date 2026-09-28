@@ -39128,7 +39128,9 @@ function findInToolCache(toolName, versionSpec) {
     external_node_os_namespaceObject.arch(),
   )
 
-  return external_node_fs_namespaceObject.existsSync(`${cachePath}.complete`) ? cachePath : ''
+  return external_node_fs_namespaceObject.existsSync(cachePath) && external_node_fs_namespaceObject.existsSync(`${cachePath}.complete`)
+    ? cachePath
+    : ''
 }
 
 function checkOtpArchitecture() {

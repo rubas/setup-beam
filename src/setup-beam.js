@@ -1297,7 +1297,9 @@ function findInToolCache(toolName, versionSpec) {
     os.arch(),
   )
 
-  return fs.existsSync(`${cachePath}.complete`) ? cachePath : ''
+  return fs.existsSync(cachePath) && fs.existsSync(`${cachePath}.complete`)
+    ? cachePath
+    : ''
 }
 
 function checkOtpArchitecture() {
