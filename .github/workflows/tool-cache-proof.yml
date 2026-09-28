@@ -23,15 +23,15 @@ jobs:
         run: find "$RUNNER_TOOL_CACHE/otp" -maxdepth 3
 
   after:
-    name: After (fix 6abe6f4)
+    name: After (fix a4d75d6)
     runs-on: ubuntu-24.04
     steps:
       - name: First setup-beam
-        uses: rubas/setup-beam@6abe6f43cb2892b509a01ddc8d5696021d850c62
+        uses: rubas/setup-beam@a4d75d68f708c8215e8f8d972d6fcc7b9e8c2efc
         with:
           otp-version: '29'
       - name: Second setup-beam
-        uses: rubas/setup-beam@6abe6f43cb2892b509a01ddc8d5696021d850c62
+        uses: rubas/setup-beam@a4d75d68f708c8215e8f8d972d6fcc7b9e8c2efc
         with:
           otp-version: '29'
       - name: Tool cache content
