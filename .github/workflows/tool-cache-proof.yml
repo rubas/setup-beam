@@ -1,0 +1,38 @@
+---
+name: tool-cache-proof
+
+on:
+  push:
+    branches:
+      - proof-tool-cache
+
+jobs:
+  before:
+    name: Before (erlef/setup-beam v1.24.1)
+    runs-on: ubuntu-24.04
+    steps:
+      - name: First setup-beam
+        uses: erlef/setup-beam@v1.24.1
+        with:
+          otp-version: '29'
+      - name: Second setup-beam
+        uses: erlef/setup-beam@v1.24.1
+        with:
+          otp-version: '29'
+      - name: Tool cache content
+        run: find "$RUNNER_TOOL_CACHE/otp" -maxdepth 3
+
+  after:
+    name: After (fix 6abe6f4)
+    runs-on: ubuntu-24.04
+    steps:
+      - name: First setup-beam
+        uses: rubas/setup-beam@6abe6f43cb2892b509a01ddc8d5696021d850c62
+        with:
+          otp-version: '29'
+      - name: Second setup-beam
+        uses: rubas/setup-beam@6abe6f43cb2892b509a01ddc8d5696021d850c62
+        with:
+          otp-version: '29'
+      - name: Tool cache content
+        run: find "$RUNNER_TOOL_CACHE/otp" -maxdepth 3
